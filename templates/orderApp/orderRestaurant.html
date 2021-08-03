@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+<form method="POST" action="\orderRestaurant\">
+    {% csrf_token %}
+
+    餐廳名稱 <input type="text" name="name" value="{{data.name}}"><br/>
+    餐點種類 <input type="text" name="food" value="{{data.food}}"><br/>
+    餐點價錢 <input type="text" name="price" value="{{data.price}}"><br/>
+    餐點說明 <input type="text" name="foodNote" value="{{data.foodNote}}"><br/>
+
+    <input onclick="return dbConfirm('確認儲存嗎?')" type="submit" value="儲存並下一筆">
+    <input type="button" onclick="location.href='/orderAppHome/' ; return dbConfirm('確定離開頁面')"  value="回首頁">
+</form>       
+</div>
+
+{% endblock %}

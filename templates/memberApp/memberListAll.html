@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+<h1>人員列表</h1>
+<!-- {{data}} -->
+<table border="1">
+<tr>
+    <th>姓名</th>
+    <th>帳號</th>
+    <th>密碼</th>
+    <th>等級</th>
+    <th>動作</th>
+</tr>
+    {% for item in data %}
+<tr>
+    <td width="100px" align="center">{{item.1}}</td>
+    <td width="100px" align="center">{{item.2}}</td>
+    <td width="100px" align="center">******</td>
+    <td width="100px" align="center">{{item.4}}</td>
+    <td><a href="/memberUpdate/{{item.0}}">修改</a>
+        <a onclick="return dbConfirm('確認刪除?')" href="/memberDelete/{{item.0}}">刪除</a><br/>
+        <a href="/memberListOne/{{item.0}}">詳細資料</a><br/>
+    </td>
+    {% empty %}
+    <td colspan="5" align="center">查無資料</td>
+</tr>
+    {% endfor %}
+</table>
+<br/>
+<input type="button" onclick="location.href='/memberKeyQuery/'" value="返回條件查詢頁面">
+<input type="button" onclick="location.href='/member/'" value="返回首頁">   
+</div>
+{% endblock %}

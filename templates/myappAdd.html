@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Test</title>
+    
+</head>
+{% load static %}
+<body>
+
+    <font color="red">{{total}} {{a}}</font>
+    <!-- 如果想要取陣列的其中一個值: {{k.aa}}  加一個.即可 -->
+</br> 
+    <img src="{% static 'pic/olo.png' %}" />
+</br>
+    {% if total > 100 %}
+        number is {{total}}, big.
+    {% elif total > 50 %}
+        number is {{total}}, slightly big.
+    {% else %}
+        number is {{total}}, ok
+    {% endif %}
+</br>
+    {{m}}
+    {{o}}
+    {{b}}
+</br>
+    {% for item in b %}
+        <!-- 字典需要用key來傳遞值 -->
+        <!-- I = {{item.a}}
+        II = {{item.b}}
+        III = {{item.c}} <br/> -->
+        <!-- 一般串列值的傳遞方式 -->
+        numpy-I = {{item.0}}
+        II = {{item.1}}
+        III = {{item.2}} <br/>
+        <!-- {{item}}</br> -->
+    {% empty %}
+        查無資料</br>
+    {% endfor %}
+<br/>
+    pandas 2 numpy<br/>
+    {% for i in b %}
+        <!-- 從1開始 -->
+        {{forloop.counter}}<br/>
+        <!-- 從0開始 -->
+        {{forloop.counter0}}<br/>
+        {{i}}<br/>
+    {% endfor %}    
+
+<br/>
+    pandas 2 numpy reverse<br/>
+    {% for i in b %}
+        <!-- 從1開始 -->
+        {{forloop.revcounter}}<br/>
+        <!-- 從0開始 -->
+        {{forloop.revcounter0}}<br/>
+        {{i}}<br/>
+    {% endfor %}    
+
+
+
+<!-- <body>
+    <font color="red"> <h1>  {{total}} {{kk}} {{k.bb}}  </h1> </font>
+    
+    {% load static %}
+    <img src=" {% static "pic/qq.png" %}"
+    
+    </body> -->
+
+
+</body>
+</html>

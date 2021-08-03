@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+    請選擇餐廳名稱
+    <form action="\orderMenu\" method="POST">
+        {% csrf_token %}
+    <select name="rName">
+    {% for i in data %}
+        <option value="{{i.0}}">{{i.0}}</option>
+    {% endfor %}
+    </select>
+    <input type="submit" onclick="return dbConfirm('確定送出?')" value="送出">
+    </form>
+    <input type="button" onclick="location.href='/orderAppHome/' ; return dbConfirm('確定離開頁面')"  value="回首頁">    
+</div>
+
+{% endblock %}

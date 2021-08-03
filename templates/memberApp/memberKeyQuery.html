@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+<h1>會員查詢</h1>
+<form method="POST" action="\memberListAll\">
+    {% csrf_token %}
+    依姓名查詢 <input type=text name="name"> <br/>
+    依等級查詢 <input type=text name="level"> <br/>
+    查詢邏輯：
+    <input type="radio" name="optLogic" value="and" checked>AND
+    <input type="radio" name="optLogic" value="or">OR<br/>
+    查詢方式：
+    <input type="radio" name="optMode" value="1">精確查詢
+    <input type="radio" name="optMode" value="2" checked>模糊查詢<br/>
+    <input type="submit" value="確認送出">
+    <input type="button" onclick="location.href='/member/'" value="返回首頁">
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width={device-width}, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- {{orderlist}} -->
+訂購單
+<table border="1">
+<tr>
+    <th>姓名</th>
+    <th>點餐</th>
+    <th>價錢</th>
+</tr>
+{% for i in orderlist %}
+<tr>
+    <td>{{i.0}}</td>
+    <td>{{i.1}}</td>
+    <td>{{i.2}}</td>
+</tr>
+{% endfor %}
+<tr><th>總價</th><th colspan="2">{{total}}</th></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<head>
+<script type="text/javascript" language="JavaScript">
+	function dbConfirm(myMsg)
+	{   
+		return confirm(myMsg);
+	}
+</script>
+</head>
+<style>
+	/* Fixed sidenav, full height */
+	.sidenav {
+		height: 100%;
+		width: 200px;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color: #111;
+		overflow-x: hidden;
+		padding-top: 20px;
+	}
+
+	/* Style the sidenav links and the dropdown button */
+	.sidenav a, .dropdown-btn {
+		padding: 6px 8px 6px 16px;
+		text-decoration: none;
+		font-size: 20px;
+		color: #818181;
+		display: block;
+		border: none;
+		background: none;
+		width: 100%;
+		text-align: left;
+		cursor: pointer;
+		outline: none;
+	}
+
+	/* On mouse-over */
+	.sidenav a:hover, .dropdown-btn:hover {
+		color: #f1f1f1;
+	}
+
+    .main{
+        background-color: rgb(0, 160, 13);
+        margin-left: 200px;
+    }
+
+    .main h2, p{
+        color: #000000;
+    }
+
+    .content{
+        margin-left: 200px;
+    }
+
+    .table_center{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+	/* Add an active class to the active dropdown button */
+	.active {
+		background-color: green;
+		color: white;
+	}
+
+	/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+	.dropdown-container {
+		display: none;
+		background-color: #262626;
+		padding-left: 8px;
+	}
+
+	/* Optional: Style the caret down icon */
+	.fa-caret-down {
+		float: right;
+		padding-right: 8px;
+	}
+
+	/* Some media queries for responsiveness */
+	@media screen and (max-width:768px){
+		.container{
+			width: 768px;
+		}
+		.spict{
+			width: 49%;
+		}
+		.left{
+			font-size: 24px;
+		}
+		
+	}
+	@media screen and (max-width:600px){
+		.container{
+			width: 600px;
+		}
+		.pict{
+			width: 100%;
+		}
+		.spict{
+			width: 100%;
+		}
+		.left{
+			width: 100%;
+			font-size: 20px;
+		}
+		.right{
+			width: 100%;
+			float: left;
+		}
+	}
+</style>
+<body>
+<div class="sidenav">
+	<a href="/orderSystem/">首頁</a>
+	<button class="dropdown-btn">會員系統
+		<i class="fa fa-caret-down"></i>
+	</button>
+	<div class="dropdown-container">
+		<a href="/member/">會員首頁</a>
+		<a href="/memberCreate/">會員新增</a>
+		<a href="/memberKeyQuery/">會員個人資料查詢</a>
+		<a href="/memberListAll/">會員全部列表</a>
+	</div>
+	<button class="dropdown-btn">訂餐系統
+		<i class="fa fa-caret-down"></i>
+	</button>
+	<div class="dropdown-container">
+		<a href="/orderAppHome/">訂餐首頁</a>
+		<!-- 餐廳資料新增(管理者) -->
+		<a href="/orderRestaurant/">餐廳資料新增</a>
+		<!-- 餐廳資料修改(管理者) -->
+		<!-- <a href="/editRestaurant/">餐廳資料修改</a> -->
+		<!-- 選擇餐廳(管理者) -->
+		<a href="/orderMenu/">選擇餐廳</a>
+		<!-- 選擇餐點(使用者) -->
+		<a href="/orderSelect/">選擇餐點</a>
+		<!-- 餐點訂購列表(使用者) -->
+		<a href="/orderCartList/">餐點訂購列表</a>
+	</div>
+	<!-- <a href="#">我的最愛</a> -->
+</div>
+<div class="main">
+{% if login != 0 %} 
+	<h2>歡迎
+
+	<font color="blue">  
+	{{loginName}} {{uName}}
+	</font>進入 ~~~  <a href="/memberLogout/">會員登出</a> <br>
+	</h2>
+{% else %}
+	<a href="/memberLogin/">會員登入</a> <br>
+{% endif %}
+</div>
+<!-- 模板 -->
+{% block content %} {% endblock %}
+</div>
+<script>
+	var dropdown = document.getElementsByClassName("dropdown-btn");
+	var i;
+
+	for (i = 0; i < dropdown.length; i++) {
+		dropdown[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var dropdownContent = this.nextElementSibling;
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+			} else {
+				dropdownContent.style.display = "block";
+			}
+		});
+	}
+</script>
+</body>

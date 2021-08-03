@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- {{data}} -->
+<div class="content">
+今天可訂餐的餐廳是:&nbsp;{{rName}}<br/>
+可選擇的餐點:
+<table border="1px">
+    <tr>
+        <th width="100px">餐點</th> <th width="100px">價錢</th> <th width="100px">說明</th><th width="100px">功能</th>
+    </tr>
+
+    {% for i in rdata %}
+    <tr align="center">
+        <td>{{i.2}}</td>
+        <td>{{i.4}}</td>
+        <td>{{i.3}}</td>
+        <td><a onclick="return dbConfirm('確認訂購嗎?')" href="\orderSelectCart\{{i.0}}">訂購</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<input type="button" onclick="location.href='/orderAppHome/' ; return dbConfirm('確定離開頁面')"  value="回首頁"><br/>
+<br/>
+{{message}}
+</div>
+
+{% endblock %}

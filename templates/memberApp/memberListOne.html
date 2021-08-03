@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+<h1>個人詳細資料</h1>
+<table border="1">
+<tr>
+    <th width="200px">欄位</th><th width="200px">資料</th>
+</tr>
+<tr height="50px"><td>姓名</td><td>{{data.1}}</td></tr>
+<tr height="50px"><td>帳號</td><td>{{data.2}}</td></tr>
+<tr height="50px"><td>密碼</td><td>{{data.3}}</td></tr>
+<tr height="50px"><td>等級</td><td>{{data.4}}</td></tr>
+</table>
+<br/>
+<input type="button" onclick="location.href='/memberKeyQuery/'" value="返回條件查詢頁面">
+<input type="button" onclick="location.href='/member/'" value="返回首頁">    
+</div>
+{% endblock %}

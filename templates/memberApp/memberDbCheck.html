@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+填寫的資料如下<br/>
+<h2>
+<form method="POST" action="\memberCreateConfirm\">
+    {% csrf_token %}
+    姓名 <input type=text name="name" value="{{data.name}}"> <br/>
+    帳號 <input type=text name="account" value="{{data.account}}"> <br/>
+    密碼 <input type=text name="passwd" value="{{data.passwd}}"><br/>
+    等級 <input type=text name="level" value="{{data.level}}"><br/>
+</h2>
+<input type="button" onclick="location.href='/memberCreate/{{data.name}}/{{data.account}}/{{data.passwd}}/{{data.level}}'" value="想再修改">
+<input type="button" onclick="location.href='/member/'" value="放棄修改">
+<input type="submit" value="沒問題">
+</form>
+<br/>
+{{message}}
+</div>
+{% endblock %}

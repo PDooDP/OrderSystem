@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+<form action="\memberCreateDbCheck\" method="POST">
+    {% csrf_token %}
+
+    姓名：{{data.name}}<br/>
+    帳號：{{data.account}}<br/>
+    密碼：{{data.passwd}}<br/>
+    等級：{{data.level}}
+    <input type="hidden" value={{id}}>
+    <input type="submit" value="確認送出">
+</form>    
+</div>
+
+{% endblock %}
